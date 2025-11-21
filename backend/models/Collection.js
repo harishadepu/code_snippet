@@ -1,0 +1,14 @@
+import mongoose from "mongoose";
+
+const collectionSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    description: { type: String, default: "" },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    snippets: [{ type: mongoose.Schema.Types.ObjectId, ref: "Snippet" }],
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model("Collection", collectionSchema);
+
